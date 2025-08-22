@@ -12,9 +12,15 @@ let package = Package(
             targets: ["YYImage"]
         )
     ],
+    dependencies: [
+        .package(url: "https://github.com/SDWebImage/libwebp-Xcode", from: "1.5.0")
+    ],
     targets: [
         .target(
             name: "YYImage",
+            dependencies: [
+                .product(name: "libwebp", package: "libwebp-Xcode")
+            ],
             publicHeadersPath: "",
             cSettings: [
                 .define("NS_BLOCK_ASSERTIONS", to: "1", .when(configuration: .release))
@@ -32,5 +38,7 @@ let package = Package(
         )
     ]
 )
+
+
 
 
